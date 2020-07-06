@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+{% load navigation_tags %} {% brand_list %}
+{% block title %}<title>Trang chủ</title>{% endblock %}
+{% block content %}
+    <div style="margin-top: 50px; display: flex; justify-content: space-between;">
+        <div style="width: 55%;">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Update"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

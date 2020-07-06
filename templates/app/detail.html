@@ -1,0 +1,42 @@
+{% extends 'app/base.html' %}
+{% load humanize %}
+{% block title %}<title>Chi tiết</title>{% endblock %}
+{% block content %}
+    <div style="margin-top: 50px; display: flex; justify-content: space-between;">
+        <div style="flex: 1; margin-right: 20px;">
+            <div style="display: flex; flex: 1; justify-content: space-between;">
+                <p>
+                    Đăng tải lúc: {{ product_item.created_at }}
+                </p>
+                <p>
+                    Cập nhật: {{ product_item.updated_at }}
+                </p>
+            </div>
+            <div style="flex: 1; min-height: 500px;background-color: #f2eedf; padding: 20px 50px 20px 50px;">
+                <h4 style="color: #b53c4c;">
+                    {{ product_item.name }}
+                </h4>
+                <p>
+                    {{ product_item.description }}
+                </p>
+            </div>
+        </div>
+        <div style="align-items: center; margin-top: 40px;">
+            <div style="width: 400px; height: 400px;">
+                    <img style="width: 100%; height: 100%; object-fit: contain;"
+                         src="{{ product_item.picture.url }}" alt="">
+            </div>
+            <h4 style="text-align: center; margin-top: 10px; color: #b53c4c;">
+                Giá: {{ product_item.price|intcomma }} VND
+            </h4>
+
+        </div>
+    </div>
+
+    <div style="flex: 1; height: 2px;background-color: darkgray; margin-top: 20px;"></div>
+
+
+    <p style="margin-top: 10px;">
+        Số sản phẩm hiện có: {{ product_list.count }}
+    </p>
+    </div>{% endblock %}

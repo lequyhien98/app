@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %}
+{% load humanize %}
+{% block title %}<title>Trang chủ</title>{% endblock %}
+{% block content %}
+    <div style="margin-top: 50px; display: flex; justify-content: center;">
+        <input style="width: 350px; height: 30px; padding-left: 10px;" placeholder="Nhập sản phẩm muốn tìm..."
+               type="text" name="" id="">
+        <button
+                style="background-color: #4166b2; color: azure; border: none; padding: 0px 15px 0px 15px; margin-left: 5px;">
+            Tìm kiếm
+        </button>
+    </div>
+    {% for product_item in product_list %}
+        <div style="display: flex; align-items: center;">
+            <div style="padding: 0px 30px 0px 100px; margin-top: 30px;">
+                <div
+                        style="display: flex; flex-direction: row; flex: 1; background-color:#94bce0; padding: 20px 50px 20px 50px; ">
+                    <img style="width: 150px; height: 150px; object-fit: contain;"
+                         src="{{ product_item.picture.url }}"
+                         alt="">
+                    <div style="display: flex; flex-direction: column;">
+                        <div style=" margin-left: 20px;display: flex; flex: 1; justify-content:space-between">
+                            <h3>
+                                <a style="color: black;" href="{{ product_item.get_absolute_url }}">
+                                    {{ product_item.name }}
+                                </a>
+                            </h3>
+                            <h4 style="color: #b53c4c;">Giá: {{ product_item.price|intcomma }}VND</h4>
+                        </div>
+                        <div style=" margin-left: 20px;">
+                            <p>
+                                {{ product_item.description }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a href="{% url 'app:update' product_item.id %}">
+                    <button style="width: 100px;" class="btn btn-primary">
+
+                        Chỉnh sửa
+                    </button>
+                </a>
+                <a href="{% url 'app:delete' product_item.id %}">
+                    <button style="width: 100px;margin-top: 15px;" class=" btn btn-danger">
+                        Xoá
+                    </button>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

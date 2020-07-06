@@ -1,0 +1,8 @@
+<nav style="display: flex; justify-content: space-between; align-items: center; ">
+    <a style="padding: 10px 35px 10px 35px; background-color: #4166b2; text-decoration: none; color: azure;"
+       href="{% url 'app:home' %}">Home</a> |
+    <a style="color: #4166b2; text-decoration: none;" href="{% url 'app:create' %}">Tạo sản phẩm</a> |
+    {% for brand_item in brand_list %}
+        <a style="color: #4166b2; text-decoration: none;" href="#">{{ brand_item.name }}</a> |
+    {% endfor %}
+</nav>
